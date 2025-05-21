@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6xrpa3kk706v"]
+
+[ext_resource type="PackedScene" uid="uid://dlyne2km2e4de" path="res://Bowling Mega Mix Mod/ModBowlingBall.glb" id="1_54cgq"]
+[ext_resource type="Script" path="res://Bowling Mega Mix Mod/ModBowlingBall.lua" id="1_g5kva"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ahr45"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3cnd6"]
+
+[node name="ModBowlingBall" type="RigidBody3D"]
+script = ExtResource("1_g5kva")
+
+[node name="ModBowlingBall" parent="." instance=ExtResource("1_54cgq")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="ModBowlingBall"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ModBowlingBall/Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_ahr45")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3cnd6")

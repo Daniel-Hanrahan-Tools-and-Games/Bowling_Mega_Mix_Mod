@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjhbafxvo7dne"]
+
+[ext_resource type="PackedScene" uid="uid://c6xrpa3kk706v" path="res://Bowling Mega Mix Mod/ModBowlingBall.tscn" id="1_sjfsx"]
+[ext_resource type="PackedScene" uid="uid://c3h8i5ylsox7s" path="res://Bowling Mega Mix Mod/ModPin.tscn" id="2_fmb7i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8buj8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_wxvke"]
+sky_material = SubResource("ProceduralSkyMaterial_8buj8")
+
+[sub_resource type="Environment" id="Environment_5ca1m"]
+background_mode = 2
+sky = SubResource("Sky_wxvke")
+tonemap_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pgn12"]
+
+[node name="ModScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5ca1m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.96748, 0, 0, 0)
+mesh = SubResource("PlaneMesh_pgn12")
+
+[node name="Pins" type="Node" parent="."]
+
+[node name="ModPin" parent="Pins" instance=ExtResource("2_fmb7i")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.153, 0.22, -0.693)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505568, 3.29968)
+
+[node name="ModBowlingBall" parent="." instance=ExtResource("1_sjfsx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015, 0.22, 1.722)
+
+[node name="NoticesAndName" type="Label" parent="."]
+offset_left = 6.0
+offset_top = 12.0
+offset_right = 1185.0
+offset_bottom = 87.0
+text = "Bowling Mega Mix Mod
+Copyright (C) 2025 Daniel Hanrahan Tools and Games
+This Expansion or Mod is under the BSD-3-Clause license and everything else in this Expansion/Mod is under this:
+This work is licensed under CC BY 4.0"
+
+[node name="Lua issues warning" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 595.0
+offset_right = 1076.0
+offset_bottom = 644.0
+text = "Lua has issues with reloading the scene after throw so to reload scene you have to close game then open the game back up and press mod
+and lua has issues with printing score to screen"
+horizontal_alignment = 2
+vertical_alignment = 2

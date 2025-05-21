@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3h8i5ylsox7s"]
+
+[ext_resource type="Script" path="res://Bowling Mega Mix Mod/ScoreLayer.lua" id="1_esgds"]
+[ext_resource type="PackedScene" uid="uid://bdowo8lepr3k4" path="res://Bowling Mega Mix Mod/ModPin.glb" id="1_m6lgm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_11x4g"]
+
+[node name="ModPin" type="Area3D"]
+script = ExtResource("1_esgds")
+
+[node name="ModPin" parent="." instance=ExtResource("1_m6lgm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_11x4g")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
